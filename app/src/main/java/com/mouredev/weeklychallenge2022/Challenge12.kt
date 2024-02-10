@@ -22,18 +22,13 @@ import java.text.Normalizer
  *
  */
 
-fun main() {
-    println(isPalindrome("Ana lleva al oso la avellana."))
-    println(isPalindrome("Adivina ya te opina, ya ni miles origina, ya ni cetro me domina, ya ni monarcas, a repaso ni mulato carreta, acaso nicotina, ya ni cita vecino, anima cocina, pedazo gallina, cedazo terso nos retoza de canilla goza, de pánico camina, ónice vaticina, ya ni tocino saca, a terracota luminosa pera, sacra nómina y ánimo de mortecina, ya ni giros elimina, ya ni poeta, ya ni vida"))
-    println(isPalindrome("¿Qué os ha parecido el reto?"))
+function palindrome(word) {
+    const inverse =  word.split('').reverse().join('')
+
+    return inverse === word
 }
 
-private fun isPalindrome(text: String): Boolean {
+ console.log(palindrome('maria'))
 
-    val normalizedText = Normalizer.normalize(text.lowercase(), Normalizer.Form.NFD)
-        .replace("[^\\p{ASCII}]".toRegex(), "")
-        .replace("[^a-z0-9]".toRegex(), "")
-        return normalizedText == normalizedText.reversed()
-    }
 
 
