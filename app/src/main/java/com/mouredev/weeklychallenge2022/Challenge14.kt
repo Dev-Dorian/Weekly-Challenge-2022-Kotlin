@@ -20,25 +20,18 @@ import kotlin.math.pow
  *
  */
 
-fun main() {
-    println(isArmstrong(371))
-    println(isArmstrong(-371))
-    println(isArmstrong(372))
-    println(isArmstrong(0))
-}
 
-private fun isArmstrong(number: Int): Boolean {
+function isArmstrong(number) {
+    InitialNumber = number
+    let sum = 0
+    let n = String(number).length
 
-    return if (number < 0) {
-        false
-    } else {
-        var sum = 0
-        val powValue = number.toString().length
-
-        number.toString().forEach { character ->
-            sum += character.toString().toDouble().pow(powValue).toInt()
-        }
-
-        number == sum
+    while (number !== 0){
+        let digit = number % 10
+        sum += Math.pow(digit, n)
+        number = Math.floor(number /10)
     }
+    return sum === InitialNumber
 }
+
+console.log(isArmstrong(371))
