@@ -19,19 +19,14 @@ package com.mouredev.weeklychallenge2022
  *
  */
 
-fun main() {
-    println(capitalize("¿hola qué tal estás?"))
-    println(capitalize("¿hola      qué tal estás?"))
-    println(capitalize("El niño ñoño"))
-}
-
-private fun capitalize(text: String): String {
-
-    var capitalizedText = text
-
-    text.replace("[^A-zÀ-ú]".toRegex(), " ").split(" ").forEach { word ->
-        capitalizedText = capitalizedText.replace(word, word.replaceFirstChar { it.uppercase() })
+const capitalLetter = (phrase) => {
+    let word = phrase.split(' ')
+    let result = ''
+    for (const w of word) {
+        result += w.substring(0, 1).toUpperCase()
+        result += w.substring(1) + ' '
     }
-
-    return capitalizedText
+    return result
 }
+
+console.log(capitalLetter('test number 16'))
