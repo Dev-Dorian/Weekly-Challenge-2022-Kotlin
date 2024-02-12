@@ -25,44 +25,18 @@ import kotlin.math.absoluteValue
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+ 
+function Days(startDate, endDate) {
+    let date1 = new Date(startDate)
 
-fun main() {
+    let date2 = new Date(endDate)
 
-    printDaysBetween("18/05/2022", "29/05/2022")
-    printDaysBetween("mouredev", "29/04/2022")
-    printDaysBetween("18/5/2022", "29/04/2022")
+    const difference = Math.abs(date2 - date1)
+    return Math.floor(difference / (1000 * 60 * 60 * 24))   
 }
 
-private fun printDaysBetween(firstDate: String, secondDate: String) {
-    try {
-        println(daysBetween(firstDate, secondDate))
-    } catch (e: DaysBetweenError) {
-        println("Error en el formato de alguna fecha")
-    } catch (e: Exception) {
-            println("Error en el parse de alguna fecha")
-    }
-}
-
-class DaysBetweenError: Exception()
-
-private fun daysBetween(firstDate: String, secondDate: String): Int {
-
-    val formatter = SimpleDateFormat("dd/MM/yyyy")
-    val firstParsedDate = formatter.parse(firstDate)
-    val secondParsedDate = formatter.parse(secondDate)
-
-    val regex = "^([0-9]){2}[/]([0-9]){2}[/]([0-9]){4}$".toRegex()
-
-    if (firstParsedDate != null
-        && secondParsedDate != null
-        && firstDate.contains(regex)
-        && secondDate.contains(regex)
-    ) {
-
-        return TimeUnit.DAYS.convert(
-            firstParsedDate.time - secondParsedDate.time,
-            TimeUnit.MILLISECONDS
-        ).toInt().absoluteValue
-    }
-    throw DaysBetweenError()
+try {
+    console.log('Day difference ' + Days('02/11/2024', '02/15/2024'))
+} catch (error) {
+    console.log(`Error: ${error.message}`)
 }
